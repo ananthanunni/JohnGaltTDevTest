@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<input type="hidden" name="__rootPath" value="@Url.Action("",new { controller="Data"})" />
+
+<div class="col-md-3" style="max-height:600px;overflow:auto">
+    <ul id="hierarchyRoot" class="list-unstyled">
+
+    </ul>
+</div>
+<div class="col-md-9">
+
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/scripts/custom");
+}
