@@ -21,13 +21,29 @@
 
     $("#hierarchyRoot").on("click", "li.hierarchy-item", function (item) {
 	  var closestListItem = $(item.target).closest("li.hierarchy-item");
-	  var id = closestListItem.attr("data-id");
-	  $(item).remove("ul");
 
-	  var element = $("<ul />");
-	  element.appendTo(closestListItem);
+	  if (closestListItem.hasClass("open")) {
+		closestListItem.removeClass("open")
+		    .find("ul:first")
+		    .addClass("hidden");
+	  }
+	  else {
+		if ($(closestListItem).children("ul").length > 0) {
+		    $(closestListItem).addClass("open").find("ul:first").removeClass("hidden");
+		    return;
+		}
+		var id = closestListItem.attr("data-id");
+		$(item.target).remove("ul");
 
-	  getChildren(element, id);
+		var element = $("<ul />");
+		element.appendTo(closestListItem);
+
+		getChildren(element, id);
+
+		closestListItem.addClass("open").find("ul:first").attr("data-loaded", true);
+	  }
+
+	  item.stopPropagation();
     });
 
     initializeRoot();
