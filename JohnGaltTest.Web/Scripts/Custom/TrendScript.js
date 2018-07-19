@@ -32,12 +32,18 @@
 		var row = $("<tr />");
 
 		$("<td />").html(item.Period).appendTo(row);
-		$("<td />").addClass("bg-warning").html(item.Sales).appendTo(row);
-		$("<td />").html(item.Demand).appendTo(row);
-		$("<td />").html(item.Supply).appendTo(row);
+		$("<td />").addClass("bg-warning").html(formatNumber(item.Sales)).appendTo(row);
+		$("<td />").html(formatNumber(item.Demand)).appendTo(row);
+		$("<td />").html(formatNumber(item.Supply)).appendTo(row);
 
 		row.appendTo(tbody);
 	  }
+    }
+
+    var formatNumber=function(value){
+	  if (!!value) return value;
+
+	  return "<label class='label label-default'>NULL</label>";
     }
 
     var initializeRoot = function () {

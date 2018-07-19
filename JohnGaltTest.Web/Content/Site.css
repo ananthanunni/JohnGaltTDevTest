@@ -32,3 +32,11 @@ overflow: auto;
 padding-left: 30px;
 list-style-type: none;
 }
+
+#resultTable th{
+    text-align:center;
+}
+
+#tableContent td{
+    text-align:right;
+}
