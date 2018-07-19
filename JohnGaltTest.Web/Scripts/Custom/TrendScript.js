@@ -32,7 +32,7 @@
 		var row = $("<tr />");
 
 		$("<td />").html(item.Period).appendTo(row);
-		$("<td />").html(item.Sales).appendTo(row);
+		$("<td />").addClass("bg-warning").html(item.Sales).appendTo(row);
 		$("<td />").html(item.Demand).appendTo(row);
 		$("<td />").html(item.Supply).appendTo(row);
 
