@@ -9,12 +9,20 @@
 <input type="hidden" name="__rootPath" value="@Url.Action("",new { controller="Data"})" />
 
 <div class="col-md-3 category-container">
-    <ul id="hierarchyRoot" class="list-unstyled">
-
-    </ul>
+    <ul id="hierarchyRoot" class="list-unstyled"></ul>
 </div>
 <div class="col-md-9">
-
+    <table class="table table-condensed table-striped table-responsive">
+        <tbody>
+            <tr>
+                <td>Period</td>
+                <td>Sales</td>
+                <td>Demand</td>
+                <td>Supply</td>
+            </tr>
+        </tbody>
+        <tbody id="tableContent"></tbody>
+    </table>
 </div>
 
 

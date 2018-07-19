@@ -28,9 +28,7 @@ max-height: 600px;
 overflow: auto;
 }
 
-#hierarchy-root > ul {
+#hierarchy-root > ul, .hierarchy-item>ul {
 padding-left: 30px;
 list-style-type: none;
 }
-
-.hierarchy-item

@@ -25,9 +25,10 @@ namespace JohnGaltTest.Web
 		bundles.Add(new StyleBundle("~/Content/css").Include(
 			    "~/Content/bootstrap.css",
 			    "~/Content/site.css"));
+		
 
 		bundles.Add(new ScriptBundle("~/scripts/custom")
-		    .Include("~/scripts/custom/HierarchyScript.js"));
+		    .Include("~/scripts/custom/TrendScript.js"));
 	  }
     }
 }

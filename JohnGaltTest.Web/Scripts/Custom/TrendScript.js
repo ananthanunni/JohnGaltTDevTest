@@ -9,10 +9,35 @@
 			  $("<li />")
 				.addClass("hierarchy-item")
 				.attr("data-id", item.SeriesId)
-				.append("<a href='javascript:void(0)'><span class='state-icon glyphicon glyphicon-chevron-right'></span>" + item.Description + "</a>")
+				.append("<a href='javascript:void(0)'><span class='state-icon glyphicon glyphicon-stop'></span>" + item.Description + "</a>")
 				.appendTo(element);
 		    }
 		});
+    }
+
+    var getChartData = function (id) {
+	  $.post(root + "/GetObservations/" + id)
+		.then(function (response) {
+		    renderChart(response);
+		});
+    }
+
+    var renderChart = function (data) {
+	  var tbody = $("#tableContent");
+	  tbody.html("");
+
+	  for (var i in data) {
+		var item = data[i];
+
+		var row = $("<tr />");
+
+		$("<td />").html(item.Period).appendTo(row);
+		$("<td />").html(item.Sales).appendTo(row);
+		$("<td />").html(item.Demand).appendTo(row);
+		$("<td />").html(item.Supply).appendTo(row);
+
+		row.appendTo(tbody);
+	  }
     }
 
     var initializeRoot = function () {
@@ -21,6 +46,9 @@
 
     $("#hierarchyRoot").on("click", "li.hierarchy-item", function (item) {
 	  var closestListItem = $(item.target).closest("li.hierarchy-item");
+	  var id = closestListItem.attr("data-id");
+
+	  getChartData(id);
 
 	  if (closestListItem.hasClass("open")) {
 		closestListItem.removeClass("open")
@@ -30,9 +58,9 @@
 	  else {
 		if ($(closestListItem).children("ul").length > 0) {
 		    $(closestListItem).addClass("open").find("ul:first").removeClass("hidden");
+		    item.stopPropagation();
 		    return;
 		}
-		var id = closestListItem.attr("data-id");
 		$(item.target).remove("ul");
 
 		var element = $("<ul />");

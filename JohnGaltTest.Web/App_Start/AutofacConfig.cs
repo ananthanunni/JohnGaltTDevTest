@@ -38,6 +38,7 @@ namespace JohnGaltTest.Web
 	  private static void RegisterRepositories(ContainerBuilder containerBuilder)
 	  {
 		containerBuilder.RegisterType<HierarchyRepository>().AsImplementedInterfaces();
+		containerBuilder.RegisterType<ObservationRepository>().AsImplementedInterfaces();
 	  }
 
 	  private static void RegisterDbConnection(ContainerBuilder containerBuilder)
@@ -51,6 +52,7 @@ namespace JohnGaltTest.Web
 	  private static void RegisterServices(ContainerBuilder containerBuilder)
 	  {
 		containerBuilder.RegisterType<HierarchyProvider>().AsImplementedInterfaces();
+		containerBuilder.RegisterType<ObservationProvider>().AsImplementedInterfaces();
 	  }
     }
 }

@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Series\HierarchyProvider.cs" />
+    <Compile Include="Series\ObservationProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JohnGalt.Entities\JohnGalt.Entities.csproj">

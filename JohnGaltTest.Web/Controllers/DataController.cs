@@ -11,10 +11,12 @@ namespace JohnGaltTest.Web.Controllers
     public class DataController : Controller
     {
 	  private IHierarchyProvider _hierarchyProvider;
+	  private IObservationProvider _observationProvider;
 
-	  public DataController(IHierarchyProvider hierarchyProvider)
+	  public DataController(IHierarchyProvider hierarchyProvider,IObservationProvider observationProvider)
 	  {
 		_hierarchyProvider = hierarchyProvider;
+		_observationProvider = observationProvider;
 	  }
 
 	  [HttpPost]
@@ -22,5 +24,11 @@ namespace JohnGaltTest.Web.Controllers
         {
 		return Json(_hierarchyProvider.GetChildren(id).ToList());
         }
+
+	  [HttpPost]
+	  public ActionResult GetObservations(int id)
+	  {
+		return Json(_observationProvider.GetObservationsFor(id));
+	  }
     }
 }
